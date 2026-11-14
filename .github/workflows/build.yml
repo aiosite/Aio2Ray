@@ -15,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Java 21
-        uses: actions/setup-java@v5  # <-- نسخه ۵ (اصلاح شده)
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '21'
@@ -23,20 +23,17 @@ jobs:
       - name: Setup Android SDK
         uses: android-actions/setup-android@v3
         with:
-          # استفاده از packages به جای api-level/ndk-version (اصلاح شده)
           packages: |
             cmdline-tools;latest
             platforms;android-34
             build-tools;34.0.0
             ndk;29.0.14206865
             emulator
-          # پذیرش خودکار مجوزها (اصلاح شده)
           accept-android-sdk-licenses: true
 
       - name: Build APK
         run: |
           cd V2rayNG
-          # تنظیم متغیر محیطی برای NDK (نسخه ۲۰۲۶)
           export ANDROID_NDK_HOME=$ANDROID_SDK_ROOT/ndk/29.0.14206865
           ./gradlew assemblePlaystoreDebug
 
