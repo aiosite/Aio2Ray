@@ -1,0 +1,48 @@
+name: Build Aio2Ray APK
+
+on:
+  push:
+    branches: [ main ]
+  release:
+    types: [ published ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Java 21
+        uses: actions/setup-java@v4
+        with:
+          java-version: '21'
+          distribution: 'temurin'
+
+      - name: Setup Android SDK
+        uses: android-actions/setup-android@v3
+        with:
+          api-level: 33
+          ndk-version: '25.1.8937393'
+
+      - name: Build APK
+        # با فرض اینکه ساختار V2rayNG در پوشه V2rayNG کپی شده است
+        run: |
+          cd V2rayNG
+          ./gradlew assemblePlaystoreDebug
+
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: Aio2Ray-APK
+          path: V2rayNG/build/outputs/apk/playstoreDebug/*.apk
+          retention-days: 30
+
+      - name: Create Release (if tag exists)
+        if: startsWith(github.ref, 'refs/tags/')
+        uses: softprops/action-gh-release@v2
+        with:
+          files: V2rayNG/build/outputs/apk/playstoreDebug/*.apk
+          draft: false
+          prerelease: false
