@@ -7,10 +7,6 @@ on:
     types: [ published ]
   workflow_dispatch:
 
-env:
-  # اجبار استفاده از Node 24 برای جلوگیری از هشدارها
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -19,7 +15,7 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Setup Java 21
-        uses: actions/setup-java@v5  # نسخه ۵ (اصلاح شده)
+        uses: actions/setup-java@v5
         with:
           distribution: 'temurin'
           java-version: '21'
