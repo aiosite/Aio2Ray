@@ -1,0 +1,4 @@
+rootProject.name = 'Aio2Ray'
+include ':app'
+include ':hev-socks5-tunnel'
+include ':V2rayNG' // پوشه اصلی کدهای منبع v2rayNG

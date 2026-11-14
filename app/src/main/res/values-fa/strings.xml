@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">آیو۲ری</string>
+    <string name="connect">اتصال</string>
+    <string name="disconnect">قطع اتصال</string>
+    <string name="settings">تنظیمات</string>
+    <string name="subscription">اشتراک</string>
+    <string name="traffic">ترافیک</string>
+    <string name="protocol_vmess">وی‌مس</string>
+    <string name="protocol_vless">وی‌لس</string>
+    <string name="protocol_shadowsocks">شدوکس</string>
+    <string name="protocol_trojan">تروجان</string>
+    <string name="protocol_hysteria">هیستریه</string>
+    <string name="status_connected">متصل</string>
+    <string name="status_disconnected">قطع شده</string>
+    <string name="status_connecting">در حال اتصال...</string>
+    <string name="about_title">درباره آیو۲ری</string>
+    <string name="version_info">نسخه ۱.۰.۰</string>
+    <string name="license_info">مجوز GPL-3.0</string>
+</resources>
